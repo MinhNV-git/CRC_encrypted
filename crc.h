@@ -4,19 +4,15 @@
 #include "stdint.h"
 #include "stdbool.h"
 
-// typedef enum CRC_type
-// {
-//     CRC_8=0,
-//     CRC_16,
-//     CRC_32
-// }CRC_type;
+#define CRC8_USED   1
+#define CRC16_USED  1
+#define CRC32_USED  1
 
 typedef struct CRC_cfg_t
 {
-    // CRC_type type;
-    uint16_t polimonial;
-    uint16_t init_value;
-    uint16_t xor_value;
+    uint32_t polimonial;
+    uint32_t init_value;
+    uint32_t xor_value;
     bool input_reflect;
     bool output_reflect;
 }CRC_cfg_t;
@@ -37,8 +33,12 @@ uint8_t Calculator_CRC8_sw(uint8_t* input, uint16_t size, CRC_cfg_t cfg);
 uint16_t Calculator_CRC16_table(uint8_t* input, uint16_t size, CRC_cfg_t cfg);
 uint16_t Calculator_CRC16_sw(uint8_t* input, uint16_t size, CRC_cfg_t cfg);
 
+uint32_t Calculator_CRC32_table(uint8_t* input, uint16_t size, CRC_cfg_t cfg);
+uint32_t Calculator_CRC32_sw(uint8_t* input, uint16_t size, CRC_cfg_t cfg);
+
 uint8_t GetLockupTable_8(uint8_t);
 uint16_t GetLockupTable_16(uint8_t);
+uint32_t GetLockupTable_32(uint8_t);
 
 void test();
 
